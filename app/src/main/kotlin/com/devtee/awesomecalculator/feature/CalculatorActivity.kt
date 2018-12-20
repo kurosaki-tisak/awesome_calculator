@@ -1,23 +1,28 @@
 package com.devtee.awesomecalculator.feature
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.devtee.awesomecalculator.R
 import com.devtee.awesomecalculator.common.numberpad.NumberPadBinder
 import com.devtee.awesomecalculator.databinding.ActivityCalculatorBinding
+import com.devtee.awesomecalculator.di.utils.ViewModelFactory
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class CalculatorActivity : AppCompatActivity() {
+class CalculatorActivity : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = DataBindingUtil.setContentView<ActivityCalculatorBinding>(this, R.layout.activity_calculator)
 
-        val binder = CalculatorBinder(this, binding)
+        val binder = CalculatorBinder(this, binding, viewModelFactory)
         binder.bindTo(this)
 
-        val numberPadBinder = NumberPadBinder(this, binding.layoutNumberPad)
+        val numberPadBinder = NumberPadBinder(this, binding.layoutNumberPad, viewModelFactory)
         numberPadBinder.bindTo(this)
     }
 

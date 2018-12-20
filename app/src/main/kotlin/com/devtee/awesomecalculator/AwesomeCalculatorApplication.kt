@@ -1,27 +1,22 @@
 package com.devtee.awesomecalculator
 
-import android.app.Application
-import android.support.v7.app.AppCompatDelegate
 import com.devtee.awesomecalculator.di.ApplicationComponent
-import com.devtee.awesomecalculator.di.ContextModule
 import com.devtee.awesomecalculator.di.DaggerApplicationComponent
-import com.devtee.awesomecalculator.di.ServiceModule
+import com.devtee.awesomecalculator.di.applyAutoInjector
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-open class AwesomeCalculatorApplication : Application() {
-
-    companion object {
-        @JvmStatic
-        lateinit var applicationComponent: ApplicationComponent
-    }
+open class AwesomeCalculatorApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        applyAutoInjector()
+    }
 
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+    override fun applicationInjector(): AndroidInjector<DaggerApplication> {
+        val component: ApplicationComponent = DaggerApplicationComponent.builder().application(this).build()
+        component.inject(this)
 
-        applicationComponent = DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(this))
-            .serviceModule(ServiceModule())
-            .build()
+        return component as AndroidInjector<DaggerApplication>
     }
 }

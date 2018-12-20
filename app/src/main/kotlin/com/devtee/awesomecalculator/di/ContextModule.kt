@@ -2,15 +2,12 @@ package com.devtee.awesomecalculator.di
 
 import android.app.Application
 import android.content.Context
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-open class ContextModule(private val application: Application) {
+abstract class ContextModule {
 
-    @Provides
-    open fun provideContext(): Context = application.applicationContext
-
-    @Provides
-    open fun providesApplication(): Application = application
+    @Binds
+    abstract fun provideContext(application: Application): Context
 }

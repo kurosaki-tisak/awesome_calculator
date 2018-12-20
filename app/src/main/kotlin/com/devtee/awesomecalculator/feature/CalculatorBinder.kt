@@ -1,24 +1,28 @@
 package com.devtee.awesomecalculator.feature
 
-import android.arch.lifecycle.LifecycleOwner
-import android.support.v7.app.AppCompatActivity
-import com.devtee.awesomecalculator.common.numberpad.NumberPadViewModel
-import com.devtee.awesomecalculator.common.viewModel
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.devtee.awesomecalculator.databinding.ActivityCalculatorBinding
+import com.devtee.awesomecalculator.di.utils.ViewModelFactory
 
-class CalculatorBinder(activity: AppCompatActivity,
-                       binding: ActivityCalculatorBinding) {
+class CalculatorBinder(
+    activity: AppCompatActivity,
+    binding: ActivityCalculatorBinding,
+    viewModelFactory: ViewModelFactory
+) {
 
-    val viewModel = activity.viewModel { CalculatorViewModel() }
-    private val numberPadViewModel = activity.viewModel { NumberPadViewModel() }
+    private val viewModel = ViewModelProviders.of(activity, viewModelFactory).get(CalculatorViewModel::class.java)
 
     init {
         binding.viewModel = viewModel
-
-        numberPadViewModel.onChange = { viewModel.getNumberFromInput(it)}
     }
 
     fun bindTo(owner: LifecycleOwner) {
-
+        viewModel.currentValue.observe(owner, Observer { doNothing() })
+        viewModel.currencyData.observe(owner, Observer { doNothing() })
     }
+
+    private fun doNothing() {}
 }

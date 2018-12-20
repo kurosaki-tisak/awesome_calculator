@@ -1,12 +1,12 @@
 package com.devtee.awesomecalculator.service
 
 import android.content.Context
-import android.support.annotation.ColorRes
-import android.support.annotation.DimenRes
-import android.support.annotation.PluralsRes
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
 import android.util.TypedValue
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.PluralsRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 
 interface ResourceService {
     var context: Context

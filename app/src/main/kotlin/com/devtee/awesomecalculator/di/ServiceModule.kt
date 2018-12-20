@@ -8,10 +8,9 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-open class ServiceModule {
+class ServiceModule {
 
     @Singleton
     @Provides
-    open fun providesResourceService(context: Context): ResourceService = ResourceServiceImpl(context)
-
+    fun provideResourceService(context: Context): ResourceService = ResourceServiceImpl(context)
 }

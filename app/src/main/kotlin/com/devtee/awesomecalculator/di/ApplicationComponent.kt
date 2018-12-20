@@ -1,12 +1,34 @@
 package com.devtee.awesomecalculator.di
 
-import com.devtee.awesomecalculator.service.ResourceService
+import android.app.Application
+import com.devtee.awesomecalculator.AwesomeCalculatorApplication
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
+import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ContextModule::class, ServiceModule::class ])
-interface ApplicationComponent {
+@Component(
+    dependencies = [], modules = [
+        AndroidSupportInjectionModule::class,
+        ApplicationModule::class,
+        ActivityBindingModule::class,
+        ContextModule::class,
+        ServiceModule::class,
+        ViewModelModule::class]
+)
+interface ApplicationComponent : AndroidInjector<DaggerApplication> {
 
-    fun getResourceService(): ResourceService
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun application(application: Application): Builder
+
+        fun build(): ApplicationComponent
+    }
+
+    fun inject(application: AwesomeCalculatorApplication)
 }

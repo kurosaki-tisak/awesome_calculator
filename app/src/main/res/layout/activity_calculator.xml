@@ -13,7 +13,7 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
                 android:text="@{viewModel.showingValue}"
                 android:layout_width="match_parent"
                 android:textStyle="bold"
