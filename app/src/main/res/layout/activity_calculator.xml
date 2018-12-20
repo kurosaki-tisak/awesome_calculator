@@ -32,9 +32,38 @@
 
         <!-- Converter Picker-->
         <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="50dp">
+
+            <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        tools:text="THB"
+                        android:gravity="center"
+                        android:textSize="36sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        tools:text="USD"
+                        android:gravity="center"
+                        android:textSize="36sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
         <!-- End Converter Picker-->

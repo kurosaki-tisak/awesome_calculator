@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.devtee.awesomecalculator.common.numberpad.NumberPadViewModel"/>
+                type="com.devtee.awesomecalculator.feature.numberpad.NumberPadViewModel"/>
     </data>
 
     <LinearLayout

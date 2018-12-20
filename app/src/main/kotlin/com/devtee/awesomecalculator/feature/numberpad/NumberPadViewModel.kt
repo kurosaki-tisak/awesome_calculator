@@ -1,4 +1,4 @@
-package com.devtee.awesomecalculator.common.numberpad
+package com.devtee.awesomecalculator.feature.numberpad
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData

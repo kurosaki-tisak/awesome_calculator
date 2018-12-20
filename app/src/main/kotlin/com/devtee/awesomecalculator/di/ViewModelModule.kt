@@ -2,7 +2,7 @@ package com.devtee.awesomecalculator.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.devtee.awesomecalculator.common.numberpad.NumberPadViewModel
+import com.devtee.awesomecalculator.feature.numberpad.NumberPadViewModel
 import com.devtee.awesomecalculator.di.utils.ViewModelFactory
 import com.devtee.awesomecalculator.di.utils.ViewModelKey
 import com.devtee.awesomecalculator.feature.CalculatorViewModel

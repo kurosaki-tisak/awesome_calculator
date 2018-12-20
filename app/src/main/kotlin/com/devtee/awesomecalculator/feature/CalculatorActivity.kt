@@ -3,7 +3,7 @@ package com.devtee.awesomecalculator.feature
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.devtee.awesomecalculator.R
-import com.devtee.awesomecalculator.common.numberpad.NumberPadBinder
+import com.devtee.awesomecalculator.feature.numberpad.NumberPadBinder
 import com.devtee.awesomecalculator.databinding.ActivityCalculatorBinding
 import com.devtee.awesomecalculator.di.utils.ViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity

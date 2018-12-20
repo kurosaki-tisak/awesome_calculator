@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.devtee.awesomecalculator.common.filter
 import com.devtee.awesomecalculator.common.map
 import com.devtee.awesomecalculator.common.mapNotNull
-import com.devtee.awesomecalculator.common.numberpad.NumberPadViewModel
+import com.devtee.awesomecalculator.feature.numberpad.NumberPadViewModel
 import com.devtee.awesomecalculator.model.Currency
 import com.devtee.awesomecalculator.repository.CurrencyRepository
 import javax.inject.Inject
