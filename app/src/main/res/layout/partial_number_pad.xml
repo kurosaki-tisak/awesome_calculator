@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.devtee.awesomecalculator.common.numberpad.NumberPadViewModel"/>
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_7"
+                    android:tag="@string/number_7"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_8"
+                    android:tag="@string/number_8"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_9"
+                    android:tag="@string/number_9"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_4"
+                    android:tag="@string/number_4"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_5"
+                    android:tag="@string/number_5"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_6"
+                    android:tag="@string/number_6"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_1"
+                    android:tag="@string/number_1"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_2"
+                    android:tag="@string/number_2"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_3"
+                    android:tag="@string/number_3"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/operator_dot"
+                    android:tag="@string/operator_dot"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/number_zero"
+                    android:tag="@string/number_zero"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+            <android.support.v7.widget.AppCompatButton
+                    android:text="@string/operator_clear"
+                    android:tag="@string/operator_clear"
+                    android:onClickListener="@{viewModel.onItemPadClick}"
+                    style="@style/AppTheme.NumberStyle"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
