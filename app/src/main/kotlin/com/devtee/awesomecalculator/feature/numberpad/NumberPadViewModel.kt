@@ -1,19 +1,26 @@
 package com.devtee.awesomecalculator.feature.numberpad
 
 import android.view.View
-import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import com.devtee.awesomecalculator.common.onValueChange
 import javax.inject.Inject
 
 class NumberPadViewModel @Inject constructor() : ViewModel() {
 
-    val currentValue = MutableLiveData<String>()
+    val currentValue = ObservableField<String>()
     val onItemPadClick = View.OnClickListener { itemPadClickListener(it) }
+
+    var onChange: (() -> Unit)? = null
 
     private var prevValue = "0"
 
     init {
-        currentValue.value = "0"
+        currentValue.set("0")
+
+        currentValue.onValueChange {
+            onChange?.invoke()
+        }
     }
 
     private fun itemPadClickListener(view: View) {
@@ -31,7 +38,7 @@ class NumberPadViewModel @Inject constructor() : ViewModel() {
 
             "C" -> {
                 prevValue = "0"
-                currentValue.value = prevValue
+                currentValue.set(prevValue)
             }
 
             else -> {
@@ -40,6 +47,6 @@ class NumberPadViewModel @Inject constructor() : ViewModel() {
             }
         }
 
-        currentValue.value = prevValue
+        currentValue.set(prevValue)
     }
 }

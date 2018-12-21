@@ -41,7 +41,7 @@ private fun handleActivity(activity: Activity) {
             object : FragmentManager.FragmentLifecycleCallbacks() {
                 override fun onFragmentCreated(fm: FragmentManager, f: Fragment, s: Bundle?) {
                     if (f is Injectable) {
-                       // AndroidSupportInjection.inject(f)
+                        AndroidSupportInjection.inject(f)
                     }
                 }
             }, true
