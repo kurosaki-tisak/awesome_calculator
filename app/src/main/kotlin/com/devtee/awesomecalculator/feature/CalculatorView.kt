@@ -17,7 +17,8 @@ class CalculatorViewImpl(val activity: AppCompatActivity,
     private lateinit var event: ClickEvent
 
     override fun setupOptionsDialog(default: String?, list: List<PickerItem>) {
-        val fromSubmit: (Pair<Int, PickerItem>) -> Unit? = { binding.viewModel?.setSubmitSubject(Pair(it.second, event)) }
+        val fromSubmit: (Pair<Int, PickerItem>) -> Unit? =
+                { binding.viewModel?.setSubmitSubject(Pair(it.second, event)) }
         dialog = DialogPicker.newInstance(list as ArrayList<PickerItem>, fromSubmit)
         dialog.setupPreselectedItem(default)
     }
@@ -30,5 +31,4 @@ class CalculatorViewImpl(val activity: AppCompatActivity,
         dialog.setupPreselectedItem(preselected)
         dialog.show(activity.supportFragmentManager, event.name)
     }
-
 }

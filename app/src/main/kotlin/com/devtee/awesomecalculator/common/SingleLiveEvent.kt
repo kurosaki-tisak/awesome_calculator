@@ -1,6 +1,5 @@
 package com.devtee.awesomecalculator.common
 
-
 /*
  *  Copyright 2017 Google Inc.
  *

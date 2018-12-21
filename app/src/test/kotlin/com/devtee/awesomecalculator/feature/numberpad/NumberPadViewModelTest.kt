@@ -1,18 +1,12 @@
 package com.devtee.awesomecalculator.feature.numberpad
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import org.amshove.kluent.`should equal`
-import org.amshove.kluent.shouldBe
-import org.amshove.kluent.shouldNotBe
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 

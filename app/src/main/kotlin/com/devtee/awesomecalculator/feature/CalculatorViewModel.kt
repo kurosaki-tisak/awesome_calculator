@@ -33,6 +33,7 @@ class CalculatorViewModel @Inject constructor(private val repository: CurrencyRe
     val convertClick = View.OnClickListener {
         showOptionsDialog.value = Pair(convertedValue.get(), ClickEvent.CONVERTER_CLICK)
     }
+    val convertButtonClick = View.OnClickListener { convertCurrency() }
 
     val currencyData: LiveData<List<PickerItem>>
         get() = repository.getData().map {
@@ -82,7 +83,7 @@ class CalculatorViewModel @Inject constructor(private val repository: CurrencyRe
         val localConversion = original!!.rate
         val startConversion = converter!!.rate
 
-        val amount =  inputValue * (startConversion!!.div(localConversion!!))
+        val amount = inputValue * (startConversion!!.div(localConversion!!))
 
         outputValue.set(currencyFormat.format(amount) + " ${converter!!.title?.toUpperCase()}")
     }
@@ -98,8 +99,12 @@ class CalculatorViewModel @Inject constructor(private val repository: CurrencyRe
     fun setSubmitSubject(click: Pair<PickerItem?, ClickEvent>) {
         val (item, event) = Pair(click.first, click.second)
         when (event) {
-            ClickEvent.ORIGINAL_CLICK -> { originalValue.set(item?.title) }
-            ClickEvent.CONVERTER_CLICK -> { convertedValue.set(item?.title) }
+            ClickEvent.ORIGINAL_CLICK -> {
+                originalValue.set(item?.title)
+            }
+            ClickEvent.CONVERTER_CLICK -> {
+                convertedValue.set(item?.title)
+            }
         }
     }
 }

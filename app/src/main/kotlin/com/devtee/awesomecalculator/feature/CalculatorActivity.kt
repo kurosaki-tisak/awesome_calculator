@@ -26,5 +26,4 @@ class CalculatorActivity : DaggerAppCompatActivity() {
         val numberPadBinder = NumberPadBinder(this, binding.layoutNumberPad, viewModelFactory, valueChange)
         numberPadBinder.bindTo(this)
     }
-
 }

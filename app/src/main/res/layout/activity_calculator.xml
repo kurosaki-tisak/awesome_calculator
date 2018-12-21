@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="viewModel"
-            type="com.devtee.awesomecalculator.feature.CalculatorViewModel" />
+                name="viewModel"
+                type="com.devtee.awesomecalculator.feature.CalculatorViewModel"/>
     </data>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="right"
-            android:paddingRight="10dp"
-            android:text="@{viewModel.showingValue}"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            tools:text="54321.00" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:text="@{viewModel.showingValue}"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:text="54321.00"/>
 
         <!-- Number Pad -->
         <include
-            android:id="@+id/layout_number_pad"
-            layout="@layout/partial_number_pad" />
+                android:id="@+id/layout_number_pad"
+                layout="@layout/partial_number_pad"/>
         <!-- End Number Pad-->
 
         <!-- Converter Picker-->
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:show="@{viewModel.isLoading}"
-                tools:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                app:show="@{!viewModel.isLoading}"
-                tools:visibility="visible">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClickListener="@{viewModel.originalClick}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@{viewModel.originalValue}"
-                        android:textSize="36sp"
-                        tools:text="THB" />
-                </androidx.cardview.widget.CardView>
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="=>"
-                    android:textSize="26sp" />
+                    app:show="@{viewModel.isLoading}"
+                    tools:visibility="gone"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    app:show="@{!viewModel.isLoading}"
+                    tools:visibility="visible">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClickListener="@{viewModel.convertClick}">
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClickListener="@{viewModel.originalClick}">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@{viewModel.originalValue}"
+                            android:textSize="36sp"
+                            tools:text="THB"/>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="=>"
+                        android:textSize="26sp"/>
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@{viewModel.convertedValue}"
-                        android:textSize="36sp"
-                        tools:text="USD" />
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:onClickListener="@{viewModel.convertClick}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@{viewModel.convertedValue}"
+                            android:textSize="36sp"
+                            tools:text="USD"/>
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
@@ -97,19 +97,26 @@
         <!-- End Converter Picker-->
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@{viewModel.outputValue}"
-                android:textSize="36sp"
-                tools:text="100USD" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{viewModel.outputValue}"
+                    android:textSize="36sp"
+                    tools:text="100USD"/>
         </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:text="convert"
+                app:show="@{!viewModel.isLoading}"
+                android:onClickListener="@{viewModel.convertButtonClick}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
