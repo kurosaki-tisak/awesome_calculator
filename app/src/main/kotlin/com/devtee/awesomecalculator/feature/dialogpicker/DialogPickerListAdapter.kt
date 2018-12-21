@@ -9,7 +9,7 @@ import com.devtee.awesomecalculator.R
 import com.devtee.awesomecalculator.databinding.ItemDialogListItemBinding
 
 class DialogPickerListAdapter(private val onItemSelectedListener: (PickerItem) -> Unit) :
-    RecyclerView.Adapter<DialogPickerListAdapter.ItemPickerViewHolder>() {
+        RecyclerView.Adapter<DialogPickerListAdapter.ItemPickerViewHolder>() {
 
     var items: List<PickerItem> = emptyList()
         set(value) {
@@ -32,19 +32,14 @@ class DialogPickerListAdapter(private val onItemSelectedListener: (PickerItem) -
         return ItemPickerViewHolder(view, onItemSelectedListener)
     }
 
-    inner class ItemPickerViewHolder(
-        itemView: View,
-        onItemSelectedListener: (PickerItem) -> Unit
-    ) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemPickerViewHolder(itemView: View,
+                                     private val onItemSelectedListener: (PickerItem) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         val binding = DataBindingUtil.bind<ItemDialogListItemBinding>(itemView)!!
 
-        init {
-            binding.onClickListener = View.OnClickListener { onItemSelectedListener.invoke(binding.item!!) }
-        }
-
         fun bind(item: PickerItem) {
             binding.item = item
+            binding.onClickListener = View.OnClickListener { this.onItemSelectedListener.invoke(binding.item!!) }
         }
     }
 }

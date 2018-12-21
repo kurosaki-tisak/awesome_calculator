@@ -16,7 +16,8 @@ import javax.inject.Inject
 class DialogPicker : DaggerAppCompatDialogFragment() {
 
     lateinit var binding: FragmentDialogPickerBinding
-    lateinit var binder: DialogPickerBinder
+
+    private var binder: DialogPickerBinder? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -26,7 +27,7 @@ class DialogPicker : DaggerAppCompatDialogFragment() {
         const val EXTRA_DIALOG_REVOKE = "com.devtee.awesomecalculator.feature.dialogpicker.EXTRA_DIALOG_REVOKE"
 
         fun newInstance(list: ArrayList<PickerItem>,
-                        submit: (Pair<Int, String>) -> Unit?): DialogPicker {
+                        submit: (Pair<Int, PickerItem>) -> Unit?): DialogPicker {
             val fragment = DialogPicker()
             val bundle = Bundle()
             bundle.putSerializable(EXTRA_DIALOG_ITEMS, list)
@@ -37,19 +38,19 @@ class DialogPicker : DaggerAppCompatDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dialog_picker, container, false)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.fragment_dialog_picker, null, false)
 
         val list: ArrayList<PickerItem> = arguments?.getSerializable(EXTRA_DIALOG_ITEMS) as ArrayList<PickerItem>
-        val submit = arguments?.getSerializable(EXTRA_DIALOG_REVOKE) as (Pair<Int, String>) -> Unit?
+        val submit = arguments?.getSerializable(EXTRA_DIALOG_REVOKE) as (Pair<Int, PickerItem>) -> Unit?
 
-        val fromSubmit: (Pair<Int, String>) -> Unit? = { submit.invoke(it) }
+        val fromSubmit: (Pair<Int, PickerItem>) -> Unit? = { submit.invoke(it) }
         binder = DialogPickerBinder(viewModelFactory, this, binding, list, fromSubmit)
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binder.bindTo(this)
+        binder?.bindTo(this)
     }
 
     override fun show(manager: FragmentManager?, tag: String?) {
@@ -58,6 +59,6 @@ class DialogPicker : DaggerAppCompatDialogFragment() {
     }
 
     fun setupPreselectedItem(preselected: String?) {
-        binder.setupPreselectedItem(preselected)
+        binder?.setupPreselectedItem(preselected)
     }
 }

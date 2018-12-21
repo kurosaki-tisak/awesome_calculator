@@ -12,15 +12,16 @@ class CalculatorBinder(activity: AppCompatActivity,
                        viewModelFactory: ViewModelFactory) {
 
     private val view = CalculatorViewImpl(activity, binding)
-    private val viewModel = ViewModelProviders.of(activity, viewModelFactory).get(CalculatorViewModel::class.java)
+    private val viewModel = ViewModelProviders.of(activity,
+            viewModelFactory).get(CalculatorViewModel::class.java)
 
     init {
         binding.viewModel = viewModel
     }
 
     fun bindTo(owner: LifecycleOwner) {
-        viewModel.currencyData.observe(owner, Observer { doNothing() })
-        viewModel.subjectList.observe(owner, Observer { view.setupOptionsDialog(it!!.first, it.second) })
+        viewModel.loadingLiveData.observe(owner, Observer { doNothing() })
+        viewModel.currencyData.observe(owner, Observer { view.setupOptionsDialog(null, it) })
         viewModel.showOptionsDialog.observe(owner, Observer { view.showOptionsDialog(it) })
     }
 

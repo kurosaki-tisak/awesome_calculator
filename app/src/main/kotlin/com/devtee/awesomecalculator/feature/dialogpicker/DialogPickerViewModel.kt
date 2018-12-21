@@ -4,19 +4,21 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.io.Serializable
+import javax.inject.Inject
 
 data class PickerItem(
         val id: Int,
-        val title: String,
+        val title: String?,
+        val rate: Double?,
         var isSelected: Boolean = false
 ) : Serializable
 
-class DialogPickerViewModel : ViewModel() {
+class DialogPickerViewModel @Inject constructor() : ViewModel() {
 
     val onClickDismiss = View.OnClickListener { clickDismiss() }
 
     val isDismissDialog = MutableLiveData<Boolean?>()
-    val submit = MutableLiveData<Pair<Int, String>>()
+    val submit = MutableLiveData<Pair<Int, PickerItem>>()
     val listItemsLiveData = MutableLiveData<List<PickerItem>>()
 
     fun setupBoxList(list: List<PickerItem>) {
@@ -31,7 +33,7 @@ class DialogPickerViewModel : ViewModel() {
     }
 
     fun onSubmit(item: PickerItem) {
-        submit.value = Pair(item.id, item.title)
+        submit.value = Pair(item.id, item)
 
         isDismissDialog.value = true
     }

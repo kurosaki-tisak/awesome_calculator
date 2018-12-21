@@ -12,7 +12,7 @@ class DialogPickerBinder @Inject constructor(viewModelFactory: ViewModelFactory,
                                              fragment: DialogFragment,
                                              binding: FragmentDialogPickerBinding,
                                              list: ArrayList<PickerItem>,
-                                             private val submit: (Pair<Int, String>) -> Unit?) {
+                                             private val submit: (Pair<Int, PickerItem>) -> Unit?) {
 
     private var view: DialogPickerView
     private val viewModel = ViewModelProviders.of(fragment, viewModelFactory).get(DialogPickerViewModel::class.java)

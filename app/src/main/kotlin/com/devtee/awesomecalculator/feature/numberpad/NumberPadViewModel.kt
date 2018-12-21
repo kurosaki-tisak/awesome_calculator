@@ -1,52 +1,50 @@
 package com.devtee.awesomecalculator.feature.numberpad
 
 import android.view.View
-import androidx.databinding.ObservableField
+import androidx.annotation.VisibleForTesting
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.devtee.awesomecalculator.common.onValueChange
 import javax.inject.Inject
 
 class NumberPadViewModel @Inject constructor() : ViewModel() {
 
-    val currentValue = ObservableField<String>()
-    val onItemPadClick = View.OnClickListener { itemPadClickListener(it) }
-
-    var onChange: (() -> Unit)? = null
+    val currentValue = MutableLiveData<String>()
+    val onItemPadClick = View.OnClickListener { itemPadClickListener(it.tag) }
 
     private var prevValue = "0"
 
     init {
-        currentValue.set("0")
-
-        currentValue.onValueChange {
-            onChange?.invoke()
-        }
+        currentValue.value = "0"
     }
 
-    private fun itemPadClickListener(view: View) {
-        when (view.tag) {
+    @VisibleForTesting
+    fun itemPadClickListener(tag: Any) {
+        when (tag) {
             "0" -> {
                 if (prevValue == "0") return
-                prevValue += view.tag
+                prevValue += tag
             }
 
             "." -> {
                 if (prevValue.last() == '.') return
                 if (prevValue.contains('.')) return
-                prevValue += view.tag
+                prevValue += tag
             }
 
             "C" -> {
                 prevValue = "0"
-                currentValue.set(prevValue)
+                currentValue.value = prevValue
             }
 
             else -> {
-                if (prevValue == "0") prevValue.drop(1)
-                prevValue += view.tag
+                if (prevValue == "0") prevValue = ""
+                prevValue += tag
             }
         }
 
-        currentValue.set(prevValue)
+        currentValue.value = prevValue
     }
+
+    @VisibleForTesting
+    fun getData() = currentValue
 }
